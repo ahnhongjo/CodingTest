@@ -18,6 +18,5 @@ def sol():
 
     print("Accepted")
 
-
 sol()
 
