@@ -3,7 +3,6 @@ def solution(citations):
     max=0
     total_len=len(citations)
 
-
     for i in citations:
         if max<i:
             max=i

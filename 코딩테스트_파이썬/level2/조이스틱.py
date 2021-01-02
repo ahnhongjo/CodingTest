@@ -1,4 +1,5 @@
 def solution(name):
+    length=len(name)
     sub = []
     for i in name:
         if ord(i) >= ord("N"):
@@ -6,30 +7,46 @@ def solution(name):
         else:
             sub.append(ord(i) - ord("A"))
 
-    rightSub = [i for i in sub]
-    right = 0
-    left = 0
-    rightNum = 0
-    leftNum = 0
+    answer=0
+    position=0
+
     while True:
-        if sum(rightSub) == 0:
+
+        answer+=sub[position]
+        sub[position]=0
+        if sum(sub)==0:
             break
-        if rightSub[rightNum] != 0:
-            right += rightSub[rightNum]
-            rightSub[rightNum] = 0
-        rightNum += 1
 
-    right += rightNum
-    while True:
-        if sum(sub) == 0:
-            break
-        if sub[leftNum] != 0:
-            left += sub[leftNum]
-            sub[leftNum] = 0
-        leftNum -= 1
+        #left
+        left_count=0
+        left=position
+        while True:
+            left-=1
+            left_count+=1
+            if sub[left]!=0:
+                break
 
-    left += abs(leftNum)
+        #right
+        right=position
+        right_count =0
+        while True:
+            right+=1
+            right_count+=1
+            if right>=length:
+                right-=1
+                right_count-=1
+                break
 
-    answer = min(right, left)
+            if sub[right]!=0:
+                break
 
-    return answer - 1
+        if right_count<=left_count:
+            answer+=right_count
+            position=right
+        else:
+            answer+=left_count
+            position=left
+
+    return answer
+
+print(solution("AAAAAAA"))
