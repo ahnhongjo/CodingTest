@@ -10,29 +10,23 @@ def solution(key, lock):
         for j in range(len(lock)):
             if lock[i][j] == 0:
                 lock_0.append((i, j))
-    if len(lock_0)==0:
+    if len(lock_0) == 0:
         return True
-
-    lock_0.sort(key=lambda x: (x[1], x[0]))
-
     for i in range(4):
         key_1 = rotate90(key_1)
-        for j in range(4):
 
-            key_1.sort(key=lambda x: (x[j//2], x[j%2]))
-
-            key_1_trans = trans(key_1, lock_0[0][0] - key_1[0][0], lock_0[0][1] - key_1[0][1])
+        for key_one in key_1:
+            key_1_trans = trans(key_1, lock_0[0][0] - key_one[0], lock_0[0][1] - key_one[1])
 
             check = len(lock_0)
             for key_loc in key_1_trans:
-                try:
-                    if lock[key_loc[0]][key_loc[1]] == 0:
-                        print(key_loc)
-                        check -= 1
+                if key_loc[0] < 0 or key_loc[0] >= len(lock) or key_loc[1] < 0 or key_loc[1] >= len(lock):
+                    continue
+                else:
+                    if lock[key_loc[0]][key_loc[1]]==0:
+                        check-=1
                     else:
-                        break
-                except:
-                    pass
+                        check+=1
 
             if check == 0:
                 return True
@@ -54,9 +48,3 @@ def trans(loc, x, y):
         res.append((i[0] + x, i[1] + y))
 
     return res
-
-
-a = [[1,1],[1,1]]
-b = [[0,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1]]
-
-print(solution(a, b))
