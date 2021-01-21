@@ -29,9 +29,6 @@ def solution(n, costs):
             for num in range(n):
                 if island[num]==big_num:
                     island[num]=small_num
-
-        print(island)
-
         answer+=i[2]
         cnt+=1
 
