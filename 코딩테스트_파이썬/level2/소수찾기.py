@@ -1,7 +1,6 @@
 from itertools import permutations
 
 def solution(numbers):
-
     answerSet=set()
     for i in range(1,len(numbers)+1):
         numList=list(permutations(numbers,i))
@@ -10,8 +9,6 @@ def solution(numbers):
             num="".join(j)
             if isPrime(int(num)):
                 answerSet.add(int(num))
-
-    print(answerSet)
     answer = len(answerSet)
     return answer
 
