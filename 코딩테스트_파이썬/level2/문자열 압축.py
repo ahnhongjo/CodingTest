@@ -1,11 +1,11 @@
 def solution(s):
     length = len(s)
-    if (length == 1):
+    if length == 1:
         return 1
 
     shortLen = 1000
 
-    for i in range(2, length):
+    for i in range(1, length):
         tmp = []
         for x in range(0, length, i):
             tmp.append(s[x:x + i])
