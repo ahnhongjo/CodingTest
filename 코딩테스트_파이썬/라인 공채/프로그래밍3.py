@@ -16,6 +16,7 @@ def solution(enter, leave):
             room.remove(leave[leave_num])
             leave_num+=1
 
+    print(answer)
     return answer
 
 solution([1,4,2,3],[2,1,3,4])

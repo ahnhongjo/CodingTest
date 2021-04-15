@@ -12,7 +12,7 @@ def quad(arr):
                 elif j == 1:
                     num_1 += 1
 
-        return (num_0 // 4 + num_0 % 4, num_1 // 4 + num_1 % 4)
+        return num_0 // 4 + num_0 % 4, num_1 // 4 + num_1 % 4
 
     else:
         div_2 = len(arr) // 2
