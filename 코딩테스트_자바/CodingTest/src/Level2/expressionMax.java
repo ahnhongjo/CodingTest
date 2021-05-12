@@ -1,7 +1,6 @@
 package Level2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -9,7 +8,6 @@ public class expressionMax {
 	public long solution(String expression) {
 		
 		ArrayList<String> exp=new ArrayList<>();
-		ArrayList<Integer> num=new ArrayList<>();
 		int[] primul= {0,0,1,1,2,2};
 		int[] priplus= {1,2,0,2,0,1};
 		int[] prisub= {2,1,2,0,1,0};

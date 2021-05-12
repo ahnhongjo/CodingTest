@@ -1,19 +1,20 @@
-import sys
+def sol():
+    n = int(input())
 
-num=int(input())
-answer=0
-pos=1
-while num!=0:
-    answer+=(num%10)//3*pos
-    num=num//10
-    if num==0:
-        break
+    if n%5==0:
+        print(n//5)
+        return
+    elif (n % 5) % 3 == 0:
+        print(n // 5 + 1)
+        return
+    elif (((n % 5) + 5) % 3) == 0:
+        print(n // 5 - 1 + ((n % 5) + 5) // 3)
+        return
+    elif (((n % 5) + 10) % 3) == 0:
+        print(n // 5 - 2 + ((n % 5) + 10) // 3)
+        return
 
-    answer+=num*3*pos
-    pos*=10
-
-print(answer)
-
-
-
+    print(-1)
+    return
+sol()
 

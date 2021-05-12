@@ -26,7 +26,6 @@ def solution(board):
     que.put((len(board) * 2 - 2 + 5, 0,0, start))
 
     while not que.empty():
-
         tmp = que.get()
         tmp=tmp[3]
         tmp.print_info()
@@ -92,4 +91,4 @@ def move(vertical, horizon, node, cnt):
     return remain, ver_remain + hor_remain, cnt, new_node
 
 
-solution([[0,0,0],[0,0,0],[0,0,0]])
+solution([[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0],[0,0,0,0,1,0,0,0],[0,0,0,1,0,0,0,1],[0,0,1,0,0,0,1,0],[0,1,0,0,0,1,0,0],[1,0,0,0,0,0,0,0]])
