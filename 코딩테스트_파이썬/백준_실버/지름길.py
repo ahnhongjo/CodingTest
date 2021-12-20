@@ -1,6 +1,3 @@
-import heapq
-
-
 def sol():
     n, d = map(int, input().split())
     ans = d

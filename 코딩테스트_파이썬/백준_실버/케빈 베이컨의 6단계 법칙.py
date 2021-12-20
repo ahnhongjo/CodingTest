@@ -9,7 +9,7 @@ def sol():
 
     for m in range(1,v+1):
         for s in range(1,v+1):
-            for e in range(1,e+1):
+            for e in range(1,v+1):
                 if d[s][e] >d[s][m]+d[m][e]:
                     d[s][e] = d[s][m]+d[m][e]
     mink=[int(1e9),0]
