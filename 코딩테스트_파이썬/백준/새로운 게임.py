@@ -21,14 +21,19 @@ def sol():
         piece_pos.append([xi,yi])
         piece_dir.append(dir)
 
+    #게임시작
     for game_num in range(1000):
+        for i in chess_map:
+            print(i)
+        print()
+
         for i in range(1,k+1):
             if piece_in_one[i][0] == 0:
                 continue
 
             now_pos = piece_pos[i]
             dir_num = piece_dir[i]
-            move_pos=[now_pos[0]+arrow[dir_num],now_pos[1]+arrow[dir_num]]
+            move_pos=[now_pos[0]+arrow[dir_num][0],now_pos[1]+arrow[dir_num][1]]
 
             #범위를 벗어날때
             if move_pos[0]<= 0 or move_pos[0]>=n or move_pos[1]<=0 or move_pos[1]>=n:
@@ -52,14 +57,34 @@ def sol():
 
             if map_color ==0:
                 if map_piece ==0:
+                    chess_map[move_pos[0]][move_pos[1]] = i*10
+                    chess_map[now_pos[0]][now_pos[1]] = chess_map[now_pos[0]][now_pos[1]] %10
+                    piece_pos[i] = [move_pos[0],move_pos[1]]
+                else:
+                    chess_map[now_pos[0]][now_pos[1]] = chess_map[now_pos[0]][now_pos[1]] %10
+                    piece_in_one[map_piece] = piece_in_one[map_piece] + piece_in_one[i]
+                    piece_in_one[i] =[0]
+                    piece_pos[i] = []
+            
+            elif map_color == 1:
+                if map_piece ==0:
+                    reverse_piece = piece_in_one[i][-1]
+                    chess_map[move_pos[0]][move_pos[1]] = reverse_piece*10+1
+                    chess_map[now_pos[0]][now_pos[1]] = chess_map[now_pos[0]][now_pos[1]] %10
+                    piece_pos[i] = []
+                    piece_pos[reverse_piece] = [move_pos[0],move_pos[1]]
+                    piece_in_one[reverse_piece] = piece_in_one[i].reverse()
+                    piece_in_one[i] =[0]
 
+                else:
+                    reverse_piece = piece_in_one[i][-1]
+                    chess_map[now_pos[0]][now_pos[1]] = chess_map[now_pos[0]][now_pos[1]] %10
+                    piece_pos[i] = []
+                    piece_in_one[map_piece] =piece_in_one[map_piece] + piece_in_one[i].reverse()
+                    piece_in_one[i] =[0]
 
-
-
-
-
-
-            if len(piece_in_one[i]) >=4:
+    
+            if len(piece_in_one[map_piece]) >=4:
                 print(game_num)
                 return
 
