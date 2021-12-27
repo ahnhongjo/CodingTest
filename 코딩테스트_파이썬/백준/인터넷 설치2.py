@@ -5,18 +5,15 @@ def sol():
     n, p, k = map(int, input().split())
     graph = [[] for _ in range(n + 1)]
     maxCost = 0
-    minCost = int(1e6)
 
     for _ in range(p):
         pc1, pc2, cost = map(int, input().split())
         if maxCost < cost:
             maxCost = cost
-        if minCost >cost:
-            minCost = cost
         graph[pc1].append([pc2, cost])
         graph[pc2].append([pc1, cost])
 
-    start = minCost
+    start = 0
     end = maxCost
 
     res = -1

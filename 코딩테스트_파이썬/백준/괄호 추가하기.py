@@ -3,6 +3,7 @@ import sys
 
 input = sys.stdin.readline
 
+#eval을 쓰면 편하다.
 def sol():
     max_value = -(2**31)
     n = int(input())
